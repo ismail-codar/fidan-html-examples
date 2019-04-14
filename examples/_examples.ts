@@ -2,12 +2,11 @@ import { fidan } from "@fidanjs/runtime";
 
 const mainDiv = document.getElementById("main");
 var backButton = fidan.html`
-<button>
-&lt;-- Back --
-</button>
+<button id="example-back">&lt;-- Back --</button>
+<hr>
 `;
 
-backButton.firstElementChild.addEventListener("click", () => {
+backButton.querySelector("#example-back").addEventListener("click", () => {
   window.location.href = "/";
 });
 mainDiv.prepend(backButton);
