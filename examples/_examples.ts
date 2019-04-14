@@ -8,6 +8,6 @@ var backButton = fidan.html`
 `;
 
 backButton.firstElementChild.addEventListener("click", () => {
-  history.go(-1);
+  window.location.href = "/";
 });
 mainDiv.prepend(backButton);
