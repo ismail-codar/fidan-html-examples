@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "packages": {
+    "@fidanjs/router": {
+      "signature": "f5aa47197b1024b0a230664386fe7400"
+    },
+    "@fidanjs/runtime": {
+      "signature": "fe7260acc500bdeccf4307cccf979bea"
+    }
+  }
+}

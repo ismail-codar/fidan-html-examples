@@ -1,0 +1,33 @@
+.app {
+  margin: auto 200px;
+}
+
+.app label {
+  width: 70px;
+  display: inline-block;
+}
+
+.app table td {
+  border-top: 1px solid #dee2e6;
+  padding: 10px;
+}
+
+.app input {
+  padding: 5px;
+  margin: 5px;
+}
+
+.app button {
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  margin-left: 170px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.app .edit-row {
+  font-weight: bold;
+  color: blue;
+}

@@ -5,10 +5,15 @@
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "yalc-link": "yalc link @fidanjs/runtime & yalc link @fidanjs/router"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@fidanjs/runtime": "^0.0.7",
+    "main.css": "^1.0.0"
+  },
   "devDependencies": {
-    "parcel-bundler": "^1.6.1"
+    "parcel-bundler": "^1.6.1",
+    "typescript": "^3.4.3"
   }
 }
