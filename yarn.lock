@@ -618,9 +618,9 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@fidanjs/runtime@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@fidanjs/runtime/-/runtime-0.0.7.tgz#e7bf464dbb10ac38ba8f658312be8a09e52c4fb8"
+"@fidanjs/runtime@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@fidanjs/runtime/-/runtime-0.0.8.tgz#06263e57ad1b785cb7bd69c6c62694c78e86ef9e"
 
 "@iarna/toml@^2.2.0":
   version "2.2.3"
