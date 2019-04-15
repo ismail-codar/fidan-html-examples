@@ -3,7 +3,7 @@ var fidan = (function(exports) {
   function EventedArray(items) {
     var _self = this,
       _array = [];
-    _self._handlers = _handlers = {
+    _self._handlers = {
       itemadded: [],
       itemremoved: [],
       itemset: [],
@@ -32,17 +32,17 @@ var fidan = (function(exports) {
     }
 
     function raiseEvent(event) {
-      _handlers[event.type].forEach(function(h) {
+      _self._handlers[event.type].forEach(function(h) {
         h.call(_self, event);
       });
     }
 
     _self.on = function(eventName, handler) {
-      _handlers[eventName].push(handler);
+      _self._handlers[eventName].push(handler);
     };
 
     _self.off = function(eventName, handler) {
-      var h = _handlers[eventName];
+      var h = _self._handlers[eventName];
       var ln = h.length;
 
       while (--ln >= 0) {
@@ -259,9 +259,9 @@ var fidan = (function(exports) {
           // debugger;
           // console.log("TEST1");
           var arr = new EventedArray(val.innerArray.slice(0));
-          // arr.on = val.on;
-          // arr.off = val.off;
-          // arr._handlers = val._handlers;
+          arr.on = val.on;
+          arr.off = val.off;
+          arr._handlers = val._handlers;
           innerFn[prop] = arr;
         } else {
           innerFn[prop] = val;
