@@ -227,6 +227,12 @@ var fidan = (function(exports) {
       return _array;
     };
 
+    _self.setEventsFrom = function(val) {
+      _self.on = val.on;
+      _self.off = val.off;
+      _self._handlers = val._handlers;
+    };
+
     if (Array.isArray(items)) {
       _self.push.apply(_self, items);
     }
@@ -256,12 +262,8 @@ var fidan = (function(exports) {
         if (Array.isArray(val)) {
           innerFn[prop] = new EventedArray(val.slice(0));
         } else if (val.hasOwnProperty("innerArray")) {
-          // debugger;
-          // console.log("TEST1");
           var arr = new EventedArray(val.innerArray.slice(0));
-          arr.on = val.on;
-          arr.off = val.off;
-          arr._handlers = val._handlers;
+          arr.setEventsFrom(val);
           innerFn[prop] = arr;
         } else {
           innerFn[prop] = val;
@@ -302,11 +304,9 @@ var fidan = (function(exports) {
     setInnerValue(innerFn, "$next", val);
     innerFn["freezed"] = freezed;
     innerFn["depends"] = [];
-
     innerFn.toString = innerFn.toJSON = function() {
       return innerFn["$val"].toString();
     };
-
     return innerFn;
   };
   var computeBy = function(initial, fn) {

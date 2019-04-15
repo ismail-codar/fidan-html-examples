@@ -95,11 +95,7 @@ const buildData = count => {
 };
 
 const dataArray = fidan.array([]);
-if (
-  dataArray["$val"] &&
-  dataArray["$next"] &&
-  dataArray["$val"].innerArray === dataArray["$next"].innerArray
-) {
+if (dataArray["$val"].innerArray === dataArray["$next"].innerArray) {
   throw `
   
     fidan.array ERROR
