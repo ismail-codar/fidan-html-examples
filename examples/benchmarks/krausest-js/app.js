@@ -95,17 +95,17 @@ const buildData = count => {
 };
 
 const dataArray = fidan.array([]);
-if (dataArray["$val"].innerArray === dataArray["$next"].innerArray) {
-  throw `
-  
-    fidan.array ERROR
+// if (dataArray["$val"].innerArray === dataArray["$next"].innerArray) {
+//   throw `
 
-  `;
-}
+//     fidan.array ERROR
+
+//   `;
+// }
 
 const selectedTr = fidan.value(null);
 
-fidan.computeBy(selectedTr, (current, prev) => {
+fidan.beforeComputeBy(selectedTr, (current, prev) => {
   if (prev) prev.className = "";
   if (current) current.className = "danger";
 });

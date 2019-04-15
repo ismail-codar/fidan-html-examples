@@ -4,16 +4,9 @@ import { buildData, BenchmarkDataRow } from "./data";
 import { startMeasure, stopMeasure } from "./measure";
 
 const dataArray = fidan.array<BenchmarkDataRow>([]);
-if (dataArray["$val"].innerArray === dataArray["$next"].innerArray) {
-  throw `
-  
-    fidan.array ERROR
-
-  `;
-}
 const selectedTr = fidan.value<HTMLElement>(null);
 
-fidan.computeBy(selectedTr, (current, prev) => {
+fidan.beforeComputeBy(selectedTr, (current, prev) => {
   if (prev) prev.className = "";
   if (current) current.className = "danger";
 });
