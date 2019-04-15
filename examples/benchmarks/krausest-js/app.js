@@ -1,17 +1,113 @@
 "use strict";
-import { fidan } from "@fidanjs/runtime";
-import { buildData, BenchmarkDataRow } from "./data";
-import { startMeasure, stopMeasure } from "./measure";
 
-const dataArray = fidan.array<BenchmarkDataRow>([]);
-if (dataArray["$val"].innerArray === dataArray["$next"].innerArray) {
+var startTime;
+var lastMeasure;
+const startMeasure = function(name) {
+  startTime = performance.now();
+  lastMeasure = name;
+};
+const stopMeasure = function() {
+  var last = lastMeasure;
+  if (lastMeasure) {
+    window.setTimeout(function() {
+      lastMeasure = null;
+      var stop = performance.now();
+      console.log(last + " took " + (stop - startTime));
+    }, 0);
+  }
+};
+
+let did = 1;
+function _random(max) {
+  return Math.round(Math.random() * 1000) % max;
+}
+
+const buildData = count => {
+  var adjectives = [
+    "pretty",
+    "large",
+    "big",
+    "small",
+    "tall",
+    "short",
+    "long",
+    "handsome",
+    "plain",
+    "quaint",
+    "clean",
+    "elegant",
+    "easy",
+    "angry",
+    "crazy",
+    "helpful",
+    "mushy",
+    "odd",
+    "unsightly",
+    "adorable",
+    "important",
+    "inexpensive",
+    "cheap",
+    "expensive",
+    "fancy"
+  ];
+  var colours = [
+    "red",
+    "yellow",
+    "blue",
+    "green",
+    "pink",
+    "brown",
+    "purple",
+    "brown",
+    "white",
+    "black",
+    "orange"
+  ];
+  var nouns = [
+    "table",
+    "chair",
+    "house",
+    "bbq",
+    "desk",
+    "car",
+    "pony",
+    "cookie",
+    "sandwich",
+    "burger",
+    "pizza",
+    "mouse",
+    "keyboard"
+  ];
+  var data = [];
+  for (var i = 0; i < count; i++) {
+    data.push({
+      id: fidan.value(did++),
+      label: fidan.value(
+        adjectives[_random(adjectives.length)] +
+          " " +
+          colours[_random(colours.length)] +
+          " " +
+          nouns[_random(nouns.length)]
+      )
+    });
+  }
+  return data;
+};
+
+const dataArray = fidan.array([]);
+if (
+  dataArray["$val"] &&
+  dataArray["$next"] &&
+  dataArray["$val"].innerArray === dataArray["$next"].innerArray
+) {
   throw `
   
     fidan.array ERROR
 
   `;
 }
-const selectedTr = fidan.value<HTMLElement>(null);
+
+const selectedTr = fidan.value(null);
 
 fidan.computeBy(selectedTr, (current, prev) => {
   if (prev) prev.className = "";
@@ -82,7 +178,7 @@ const swaprows = () => {
   stopMeasure();
 };
 
-const itemView = (dataItem: BenchmarkDataRow) => {
+const itemView = dataItem => {
   return fidan.html`
   <tr>
       <td class="col-md-1">${dataItem.id}</td>
@@ -148,7 +244,7 @@ const mainView = fidan.html`
   </div>
 `;
 
-mainView.firstElementChild.addEventListener("click", (e: any) => {
+mainView.firstElementChild.addEventListener("click", e => {
   if (e.target.matches(".lbl")) {
     select(e);
   } else if (e.target.matches(".remove")) {
