@@ -6,10 +6,10 @@ import { startMeasure, stopMeasure } from "./measure";
 const dataArray = fidan.array<BenchmarkDataRow>([]);
 const selectedTr = fidan.value<HTMLElement>(null);
 
-fidan.beforeComputeBy(selectedTr, (current, prev) => {
+fidan.beforeCompute<HTMLElement>((current, prev) => {
   if (prev) prev.className = "";
   if (current) current.className = "danger";
-});
+}, selectedTr);
 
 const run = () => {
   startMeasure("run");
@@ -133,7 +133,7 @@ const mainView = fidan.html`
           <tbody>
           ${fidan.htmlArrayMap(dataArray, itemView, {
             useCloneNode: true,
-            renderMode: "reconcile"
+            reuseMode: false
           })}
           </tbody>
       </table>
