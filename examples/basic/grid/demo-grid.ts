@@ -1,5 +1,9 @@
-import { fidan } from "@fidanjs/runtime";
-import { FidanArray, FidanValue } from "@fidanjs/runtime/build/f";
+import { fidan, FidanValue, FidanArray } from "@fidanjs/runtime";
+
+type HeroType = {
+  name: string;
+  power: number;
+};
 
 // utility functions
 const capitalize = (str: string) => {
@@ -9,10 +13,7 @@ const capitalize = (str: string) => {
 // demo grid component
 export const DemoGrid = (
   columns: FidanArray<string>,
-  heroes: FidanArray<{
-    name: string;
-    power: number;
-  }>,
+  heroes: FidanArray<HeroType>,
   filterKey: FidanValue<string>
 ) => {
   const sortKey = fidan.value("");
@@ -26,7 +27,7 @@ export const DemoGrid = (
     () => {
       const _sortKey = sortKey();
       const _filterKey = filterKey();
-      let _heroes = heroes() as any[];
+      let _heroes: HeroType[] = heroes();
       var order = sortOrders[_sortKey] || 1;
 
       if (_filterKey) {

@@ -14,11 +14,13 @@ let btnIncrement: HTMLButtonElement = null;
 
 const app = fidan.html`
 <div>
-    <button ref="${element =>
-      (btnDecrement = element)}" onclick="${decrement}"> - </button>
+    <button ref="${element => {
+      btnDecrement = element;
+    }}" onclick="${decrement}"> - </button>
     ${count}
-    <button ref="${element =>
-      (btnIncrement = element)}" onclick="${increment}"> + </button>
+    <button ref="${element => {
+      btnIncrement = element;
+    }}" onclick="${increment}"> + </button>
 </div>
 `;
 

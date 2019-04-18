@@ -6,10 +6,14 @@ import { startMeasure, stopMeasure } from "./measure";
 const dataArray = fidan.array<BenchmarkDataRow>([]);
 const selectedTr = fidan.value<HTMLElement>(null);
 
-fidan.beforeCompute<HTMLElement>((current, prev) => {
-  if (prev) prev.className = "";
-  if (current) current.className = "danger";
-}, selectedTr);
+fidan.beforeCompute<HTMLElement>(
+  null,
+  (current, prev) => {
+    if (prev) prev.className = "";
+    if (current) current.className = "danger";
+  },
+  selectedTr
+);
 
 const run = () => {
   startMeasure("run");

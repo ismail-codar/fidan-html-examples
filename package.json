@@ -9,7 +9,7 @@
     "yalc-link": "yalc link @fidanjs/runtime & yalc link @fidanjs/router"
   },
   "dependencies": {
-    "@fidanjs/runtime": "^0.0.13",
+    "@fidanjs/runtime": "^0.0.15",
     "main.css": "^1.0.0"
   },
   "devDependencies": {
