@@ -51,8 +51,7 @@ export const DemoGrid = (
 
       return _heroes;
     },
-    filterKey,
-    sortKey
+    () => [filterKey, sortKey]
   );
 
   const sortBy = function(key: string) {
@@ -71,12 +70,12 @@ export const DemoGrid = (
                   onclick="${() => sortBy(key)}" 
                   class="${fidan.compute(
                     () => (sortKey() == key ? "active" : ""),
-                    sortKey
+                    () => [sortKey]
                   )}">
                       ${capitalize(key)}
                       <span class="${fidan.compute(
                         () => "arrow " + (sortOrders[key] > 0 ? "asc" : "dsc"),
-                        sortKey
+                        () => [sortKey]
                       )}" >
                       </span>
                   </th>

@@ -16,28 +16,38 @@ const fullName = fidan.compute(
   () => {
     return firstName() + " " + lastName();
   },
-  firstName,
-  lastName
+  () => [firstName, lastName]
 );
 
-const buttonText = fidan.compute(() => {
-  return formMode() === "add" ? "Add" : "Update";
-}, formMode);
+const buttonText = fidan.compute(
+  () => {
+    return formMode() === "add" ? "Add" : "Update";
+  },
+  () => [formMode]
+);
 
-fidan.compute(() => {
-  if (formMode() === "add") {
-    firstName("");
-    lastName("");
-    personId = null;
-    const firstInput = document.querySelector(".app input") as HTMLInputElement;
-    firstInput && firstInput.focus();
-  }
-}, formMode);
+fidan.compute(
+  () => {
+    if (formMode() === "add") {
+      firstName("");
+      lastName("");
+      personId = null;
+      const firstInput = document.querySelector(
+        ".app input"
+      ) as HTMLInputElement;
+      firstInput && firstInput.focus();
+    }
+  },
+  () => [formMode]
+);
 
 const personDataRowClass = person =>
-  fidan.compute(() => {
-    return personId === person.id ? "edit-row" : "";
-  }, formMode);
+  fidan.compute(
+    () => {
+      return personId === person.id ? "edit-row" : "";
+    },
+    () => [formMode]
+  );
 
 // UI Actions
 const submitPerson = e => {
