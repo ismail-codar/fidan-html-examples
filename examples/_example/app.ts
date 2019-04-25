@@ -1,6 +1,6 @@
-import { fidan } from "@fidanjs/runtime";
+import { html } from "@fidanjs/runtime";
 
-const app = fidan.html`
-<div>app</div>
+const app = html`
+  <div>app</div>
 `;
 document.getElementById("main").appendChild(app);

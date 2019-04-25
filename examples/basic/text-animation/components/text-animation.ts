@@ -1,8 +1,8 @@
-import { fidan } from "@fidanjs/runtime";
+import { inject, compute, html } from "@fidanjs/runtime";
 import { SvgTree } from "./svg-tree";
 
 let containerRef: HTMLElement = null;
-const mousePos = fidan.inject({ x: 0, y: 0 });
+const mousePos = inject({ x: 0, y: 0 });
 
 const handleMouseMove = event => {
   const elem = containerRef;
@@ -17,26 +17,26 @@ const handleMouseOut = event => {
   mousePos.y = 0;
 };
 
-const animatedTextStyle = fidan.compute(
+const animatedTextStyle = compute(
   () => `--maskX: ${mousePos.x};--maskY: ${mousePos.y}`
 );
 
 const colorStyle = color => "color:" + color;
 
-export const TextAnimation = ({ textColor, overlayColor, text }) => fidan.html`
-<section
+export const TextAnimation = ({ textColor, overlayColor, text }) => html`
+  <section
     class="animatedTextContainer"
     style="${animatedTextStyle}"
     onmousemove="${handleMouseMove}"
     onmouseout="${handleMouseOut}"
     ref="${element => (containerRef = element)}"
->
+  >
     <h1 style="${colorStyle(textColor)}" class="animatedTextContent">
-    ${text}
+      ${text}
     </h1>
     <h1 style="${colorStyle(overlayColor)}" class="animatedTextContentClone">
-    ${text}
+      ${text}
     </h1>
     ${SvgTree}
-</section>
+  </section>
 `;

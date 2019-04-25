@@ -1,4 +1,11 @@
-import { fidan, FidanValue, FidanArray } from "@fidanjs/runtime";
+import {
+  FidanValue,
+  FidanArray,
+  value,
+  compute,
+  html,
+  htmlArrayMap
+} from "@fidanjs/runtime";
 
 type HeroType = {
   name: string;
@@ -16,14 +23,14 @@ export const DemoGrid = (
   heroes: FidanArray<HeroType>,
   filterKey: FidanValue<string>
 ) => {
-  const sortKey = fidan.value("");
+  const sortKey = value("");
   const sortOrders = {};
   columns().forEach(function(key) {
     sortOrders[key] = 1;
   });
 
   // Reactively compute filteredHeroes by filterKey and sortKey
-  const filteredHeroes = fidan.compute(
+  const filteredHeroes = compute(
     () => {
       const _sortKey = sortKey();
       const _filterKey = filterKey();
@@ -59,43 +66,49 @@ export const DemoGrid = (
     sortOrders[key] = sortOrders[key] * -1;
   };
 
-  return fidan.html`
-      <table>
-          <thead>
-              <tr>
-              ${fidan.htmlArrayMap(
-                columns,
-                key => fidan.html`
-                  <th
-                  onclick="${() => sortBy(key)}" 
-                  class="${fidan.compute(
-                    () => (sortKey() == key ? "active" : ""),
+  return html`
+    <table>
+      <thead>
+        <tr>
+          ${htmlArrayMap(
+            columns,
+            key => html`
+              <th
+                onclick="${() => sortBy(key)}"
+                class="${compute(
+                  () => (sortKey() == key ? "active" : ""),
+                  () => [sortKey]
+                )}"
+              >
+                ${capitalize(key)}
+                <span
+                  class="${compute(
+                    () => "arrow " + (sortOrders[key] > 0 ? "asc" : "dsc"),
                     () => [sortKey]
-                  )}">
-                      ${capitalize(key)}
-                      <span class="${fidan.compute(
-                        () => "arrow " + (sortOrders[key] > 0 ? "asc" : "dsc"),
-                        () => [sortKey]
-                      )}" >
-                      </span>
-                  </th>
+                  )}"
+                >
+                </span>
+              </th>
+            `
+          )}
+        </tr>
+      </thead>
+      <tbody>
+        ${htmlArrayMap(
+          filteredHeroes,
+          entry => html`
+            <tr>
+              ${htmlArrayMap(
+                columns,
+                key =>
+                  html`
+                    <td>${entry[key]}</td>
                   `
               )}
-              </tr>
-          </thead>
-          <tbody>
-              ${fidan.htmlArrayMap(
-                filteredHeroes,
-                entry => fidan.html`
-                  <tr>
-                  ${fidan.htmlArrayMap(
-                    columns,
-                    key => fidan.html`<td>${entry[key]}</td>`
-                  )}
-                  </tr>
-                  `
-              )}
-          </tbody>
-      </table>
-      `;
+            </tr>
+          `
+        )}
+      </tbody>
+    </table>
+  `;
 };

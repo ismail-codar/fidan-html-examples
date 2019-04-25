@@ -1,11 +1,11 @@
-import { fidan } from "@fidanjs/runtime";
+import { inject, html } from "@fidanjs/runtime";
 
-const mousePosition = fidan.inject({ x: 0, y: 0 });
+const mousePosition = inject({ x: 0, y: 0 });
 
-const app = fidan.html`
-<div style="width:100%; height:1000px">
+const app = html`
+  <div style="width:100%; height:1000px">
     x: ${mousePosition.x}, y:${mousePosition.y}
-</div>
+  </div>
 `;
 
 document.body.addEventListener("mousemove", e => {

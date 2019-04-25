@@ -1,5 +1,4 @@
-import { fidan } from "@fidanjs/runtime";
-import { FidanValue } from "@fidanjs/runtime/build/f";
+import { value, FidanValue } from "@fidanjs/runtime";
 
 export interface BenchmarkDataRow {
   id: FidanValue<number>;
@@ -70,8 +69,8 @@ export const buildData = count => {
   var data = [];
   for (var i = 0; i < count; i++) {
     data.push({
-      id: fidan.value(did++),
-      label: fidan.value(
+      id: value(did++),
+      label: value(
         adjectives[_random(adjectives.length)] +
           " " +
           colours[_random(colours.length)] +

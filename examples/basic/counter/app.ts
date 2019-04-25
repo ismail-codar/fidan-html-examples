@@ -1,6 +1,6 @@
-import { fidan, FidanValue } from "@fidanjs/runtime";
+import { FidanValue, value, html } from "@fidanjs/runtime";
 
-const count: FidanValue<number> = fidan.value(0);
+const count: FidanValue<number> = value(0);
 
 const decrement = () => {
   count(count() - 1);
@@ -12,16 +12,26 @@ const increment = () => {
 
 let btnIncrement: HTMLButtonElement = null;
 
-const app = fidan.html`
-<div>
-    <button ref="${element => {
-      btnDecrement = element;
-    }}" onclick="${decrement}"> - </button>
+const app = html`
+  <div>
+    <button
+      ref="${element => {
+        btnDecrement = element;
+      }}"
+      onclick="${decrement}"
+    >
+      -
+    </button>
     ${count}
-    <button ref="${element => {
-      btnIncrement = element;
-    }}" onclick="${increment}"> + </button>
-</div>
+    <button
+      ref="${element => {
+        btnIncrement = element;
+      }}"
+      onclick="${increment}"
+    >
+      +
+    </button>
+  </div>
 `;
 
 let btnDecrement: HTMLButtonElement = null;
