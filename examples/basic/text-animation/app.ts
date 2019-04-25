@@ -1,16 +1,17 @@
 import { html } from "@fidanjs/runtime";
 
 import "./styles.scss";
-import { SvgTree } from "./components/svg-tree";
 import { TextAnimation } from "./components/text-animation";
+
+const textAnimation = TextAnimation({
+  textColor: "#A20524",
+  overlayColor: "#fdc52c",
+  text: "BUILD A BETTER FUTURE"
+});
 
 const app = html`
   <div class="wrapper">
-    ${TextAnimation({
-      textColor: "#A20524",
-      overlayColor: "#fdc52c",
-      text: "BUILD A BETTER FUTURE"
-    })}
+    ${textAnimation}
     <hr />
     <a
       href="https://github.com/ebrugulec/text-animation-hooks"
