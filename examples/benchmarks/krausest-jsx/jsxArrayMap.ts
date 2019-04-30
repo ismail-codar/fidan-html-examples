@@ -1,14 +1,32 @@
-import { FidanArray, arrayMap } from "@fidanjs/runtime";
+import { FidanArray, arrayMap, beforeCompute } from "@fidanjs/runtime";
+import reconcile from "./reconcile";
 
 export const jsxArrayMap = <T>(
   arr: FidanArray<T>,
   renderCallback: (data: T) => DocumentFragment,
-  options?: {
-    useCloneNode: boolean;
-    reuseMode?: boolean;
-  }
+  reuseMode?: boolean
 ) => {
-  // arrayMap(arr as any, parentElement, nextElement, renderCallback);
-  //   var items = arr();
-  //   for (var i = 0; i < items.length; i++) {}
+  let parentElement = document.createElement("template") as any;
+
+  beforeCompute(
+    arr.$val.innerArray,
+    (nextVal, beforeVal) => {
+      if (parentElement.tagName === "TEMPLATE" && parentElement.parentElement) {
+        const parent = parentElement.parentElement;
+        parentElement.remove();
+        parentElement = parent;
+      }
+      reconcile(
+        parentElement,
+        beforeVal ? beforeVal["innerArray"] : [],
+        nextVal,
+        item => {
+          return renderCallback(item);
+        },
+        () => {}
+      );
+    },
+    () => [arr]
+  );
+  return parentElement;
 };

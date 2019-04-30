@@ -11,7 +11,6 @@ const r = jsxRuntime;
 const dataArray = array<BenchmarkDataRow>([]);
 const selectedTr = value<HTMLElement>(null);
 
-
 beforeCompute<HTMLElement>(
   null,
   (current, prev) => {
@@ -61,9 +60,10 @@ const select = e => {
 const del = e => {
   startMeasure("del");
   const id = parseInt(e.target.getAttribute("data-id"));
-  const data = dataArray();
+  const data = dataArray().slice(0);
   const idx = data.findIndex(item => item.id() == id);
   data.splice(idx, 1);
+  dataArray(data);
   stopMeasure();
 };
 
@@ -184,19 +184,13 @@ const mainView = (
       </div>
     </div>
     <table class="table table-hover table-striped test-data">
-      <tbody>
-        <$ each={dataArray().slice(0)}>{itemView}</$>
-        {/* {jsxArrayMap(dataArray, itemView, {
-          useCloneNode: true,
-          reuseMode: false
-        })} */}
-      </tbody>
+      <tbody>{jsxArrayMap(dataArray, itemView)}</tbody>
     </table>
     <span class="preloadicon glyphicon glyphicon-remove" aria-hidden="true" />
   </div>
 );
 
-mainView.firstElementChild.addEventListener("click", (e: any) => {
+mainView.addEventListener("click", (e: any) => {
   if (e.target.matches(".lbl")) {
     select(e);
   } else if (e.target.matches(".remove")) {
