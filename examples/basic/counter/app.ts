@@ -14,12 +14,7 @@ let btnIncrement: HTMLButtonElement = null;
 
 const app = html`
   <div>
-    <button
-      ref="${element => {
-        btnDecrement = element;
-      }}"
-      onclick="${decrement}"
-    >
+    <button onclick="${decrement}">
       -
     </button>
     ${count}
@@ -33,11 +28,5 @@ const app = html`
     </button>
   </div>
 `;
-
-let btnDecrement: HTMLButtonElement = null;
-
-setInterval(() => {
-  console.log(btnIncrement, btnDecrement);
-}, 4000);
 
 document.getElementById("main").appendChild(app);
