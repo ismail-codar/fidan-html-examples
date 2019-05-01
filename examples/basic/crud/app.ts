@@ -23,15 +23,20 @@ const buttonText = compute(() => {
   return formMode() === "add" ? "Add" : "Update";
 });
 
-compute(() => {
-  if (formMode() === "add") {
-    firstName("");
-    lastName("");
-    personId = null;
-    const firstInput = document.querySelector(".app input") as HTMLInputElement;
-    firstInput && firstInput.focus();
-  }
-});
+compute(
+  () => {
+    if (formMode() === "add") {
+      firstName("");
+      lastName("");
+      personId = null;
+      const firstInput = document.querySelector(
+        ".app input"
+      ) as HTMLInputElement;
+      firstInput && firstInput.focus();
+    }
+  },
+  () => [formMode]
+);
 
 const personDataRowClass = person =>
   compute(
