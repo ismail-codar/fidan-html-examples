@@ -1,15 +1,10 @@
 "use strict";
-import {
-  value,
-  array,
-  beforeCompute,
-  html,
-  htmlArrayMap
-} from "@fidanjs/runtime";
+import "../../_examples";
+import { value, beforeCompute, html, htmlArrayMap } from "@fidanjs/runtime";
 import { buildData, BenchmarkDataRow } from "./data";
 import { startMeasure, stopMeasure } from "./measure";
 
-const dataArray = array<BenchmarkDataRow>([]);
+const dataArray = value<BenchmarkDataRow[]>([]);
 const selectedTr = value<HTMLElement>(null);
 
 beforeCompute<HTMLElement>(
@@ -187,7 +182,7 @@ const mainView = html`
       <tbody>
         ${htmlArrayMap(dataArray, itemView, {
           useCloneNode: true,
-          reuseMode: false
+          renderMode: "reconcile"
         })}
       </tbody>
     </table>

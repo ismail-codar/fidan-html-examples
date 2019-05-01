@@ -1,3 +1,4 @@
+import "../../_examples";
 import { FidanValue, value, html } from "@fidanjs/runtime";
 
 const count: FidanValue<number> = value(0);

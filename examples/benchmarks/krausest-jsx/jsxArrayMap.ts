@@ -18,8 +18,8 @@ export const jsxArrayMap = <T>(
       }
       reconcile(
         parentElement,
-        beforeVal ? beforeVal["innerArray"] : [],
-        nextVal,
+        beforeVal || [],
+        nextVal || [],
         item => {
           return renderCallback(item);
         },

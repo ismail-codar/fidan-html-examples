@@ -19,8 +19,8 @@ const capitalize = (str: string) => {
 
 // demo grid component
 export const DemoGrid = (
-  columns: FidanArray<string>,
-  heroes: FidanArray<HeroType>,
+  columns: FidanArray<string[]>,
+  heroes: FidanArray<HeroType[]>,
   filterKey: FidanValue<string>
 ) => {
   const sortKey = value("");

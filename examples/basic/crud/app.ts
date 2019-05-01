@@ -1,15 +1,18 @@
-import { value, compute, html, htmlArrayMap, array } from "@fidanjs/runtime";
+import "../../_examples";
+import { value, compute, html, htmlArrayMap } from "@fidanjs/runtime";
 
 // State variables
 let personId = null;
 const formMode = value("add"); // add or edit
 const firstName = value("");
 const lastName = value("");
-const personList = array<{
-  id: any;
-  firstName: typeof firstName;
-  lastName: typeof lastName;
-}>([]);
+const personList = value<
+  {
+    id: any;
+    firstName: typeof firstName;
+    lastName: typeof lastName;
+  }[]
+>([]);
 
 // Reactive updating
 const fullName = compute(

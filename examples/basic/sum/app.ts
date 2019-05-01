@@ -1,8 +1,9 @@
-import {value, compute, html} from "@fidanjs/runtime";
+import "../../_examples";
+import { value, compute, html } from "@fidanjs/runtime";
 
 var A = value(1);
 var B = value(2);
-var C = compute(()=>A() + B());
+var C = compute(() => A() + B());
 
 var view = html`
   <div>

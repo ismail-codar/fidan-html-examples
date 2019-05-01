@@ -1,4 +1,5 @@
-import { html, htmlArrayMap, array } from "@fidanjs/runtime";
+import "../../_examples";
+import { html, htmlArrayMap, value } from "@fidanjs/runtime";
 
 import { from, Subject } from "rxjs";
 import { ajax } from "rxjs/ajax";
@@ -41,7 +42,7 @@ C.subscribe(val => {
 });
 C.next(2);
 
-const arr = array([]);
+const arr = value([]);
 
 const app = html`
   <div>

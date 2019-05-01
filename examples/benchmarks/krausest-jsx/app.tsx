@@ -1,5 +1,6 @@
 "use strict";
-import { value, array, beforeCompute } from "@fidanjs/runtime";
+import "../../_examples";
+import { value, beforeCompute } from "@fidanjs/runtime";
 
 import { buildData, BenchmarkDataRow } from "./data";
 import { startMeasure, stopMeasure } from "./measure";
@@ -8,7 +9,7 @@ import { jsxRuntime } from "../../jsx";
 import { jsxArrayMap } from "./jsxArrayMap";
 const r = jsxRuntime;
 
-const dataArray = array<BenchmarkDataRow>([]);
+const dataArray = value<BenchmarkDataRow[]>([]);
 const selectedTr = value<HTMLElement>(null);
 
 beforeCompute<HTMLElement>(
@@ -60,10 +61,16 @@ const select = e => {
 const del = e => {
   startMeasure("del");
   const id = parseInt(e.target.getAttribute("data-id"));
-  const data = dataArray().slice(0);
+  const data = dataArray();
+
+  dataArray().splice = function(): any {
+    const arr = this.slice(0);
+    Array.prototype.splice.apply(arr, arguments);
+    dataArray(arr);
+  };
+
   const idx = data.findIndex(item => item.id() == id);
   data.splice(idx, 1);
-  dataArray(data);
   stopMeasure();
 };
 

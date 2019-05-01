@@ -1,11 +1,12 @@
-import { value, array, html } from "@fidanjs/runtime";
+import "../../_examples";
+import { value, html } from "@fidanjs/runtime";
 import { DemoGrid } from "./demo-grid";
 
 // app & data
 const data = {
   searchQuery: value(""),
-  gridColumns: array(["name", "power"]),
-  gridData: array([
+  gridColumns: value(["name", "power"]),
+  gridData: value([
     { name: "Chuck Norris", power: Infinity },
     { name: "Bruce Lee", power: 9000 },
     { name: "Jackie Chan", power: 7000 },

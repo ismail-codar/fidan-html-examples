@@ -1,3 +1,4 @@
+import "../../_examples";
 import { inject, html } from "@fidanjs/runtime";
 
 const mousePosition = inject({ x: 0, y: 0 });
