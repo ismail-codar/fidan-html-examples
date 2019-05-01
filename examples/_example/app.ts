@@ -1,3 +1,4 @@
+import "../_examples";
 import { html } from "@fidanjs/runtime";
 
 const app = html`
