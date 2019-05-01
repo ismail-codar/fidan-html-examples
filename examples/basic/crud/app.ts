@@ -15,34 +15,23 @@ const personList = value<
 >([]);
 
 // Reactive updating
-const fullName = compute(
-  () => {
-    return firstName() + " " + lastName();
-  },
-  () => [firstName, lastName]
-);
+const fullName = compute(() => {
+  return firstName() + " " + lastName();
+});
 
-const buttonText = compute(
-  () => {
-    return formMode() === "add" ? "Add" : "Update";
-  },
-  () => [formMode]
-);
+const buttonText = compute(() => {
+  return formMode() === "add" ? "Add" : "Update";
+});
 
-compute(
-  () => {
-    if (formMode() === "add") {
-      firstName("");
-      lastName("");
-      personId = null;
-      const firstInput = document.querySelector(
-        ".app input"
-      ) as HTMLInputElement;
-      firstInput && firstInput.focus();
-    }
-  },
-  () => [formMode]
-);
+compute(() => {
+  if (formMode() === "add") {
+    firstName("");
+    lastName("");
+    personId = null;
+    const firstInput = document.querySelector(".app input") as HTMLInputElement;
+    firstInput && firstInput.focus();
+  }
+});
 
 const personDataRowClass = person =>
   compute(

@@ -62,13 +62,6 @@ const del = e => {
   startMeasure("del");
   const id = parseInt(e.target.getAttribute("data-id"));
   const data = dataArray();
-
-  dataArray().splice = function(): any {
-    const arr = this.slice(0);
-    Array.prototype.splice.apply(arr, arguments);
-    dataArray(arr);
-  };
-
   const idx = data.findIndex(item => item.id() == id);
   data.splice(idx, 1);
   stopMeasure();
@@ -88,7 +81,9 @@ const swaprows = () => {
   const data = dataArray();
   const x = 1,
     y = 998;
-  data.splice(y, 1, data.splice(x, 1, data[y])[0]);
+  const sp1 = data.splice(x, 1, data[y])[0];
+  data.splice(y, 1, sp1);
+  // dataArray().splice(y, 1, dataArray().splice(x, 1, dataArray()[y])[0]);
   stopMeasure();
 };
 

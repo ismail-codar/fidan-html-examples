@@ -2,14 +2,14 @@ import { FidanArray, arrayMap, beforeCompute } from "@fidanjs/runtime";
 import reconcile from "./reconcile";
 
 export const jsxArrayMap = <T>(
-  arr: FidanArray<T>,
+  arr: FidanArray<T[]>,
   renderCallback: (data: T) => DocumentFragment,
   reuseMode?: boolean
 ) => {
   let parentElement = document.createElement("template") as any;
 
   beforeCompute(
-    arr.$val.innerArray,
+    arr.$val,
     (nextVal, beforeVal) => {
       if (parentElement.tagName === "TEMPLATE" && parentElement.parentElement) {
         const parent = parentElement.parentElement;

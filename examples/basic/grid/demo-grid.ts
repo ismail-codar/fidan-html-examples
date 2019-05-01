@@ -29,37 +29,34 @@ export const DemoGrid = (
     sortOrders[key] = 1;
   });
 
-  // Reactively compute filteredHeroes by filterKey and sortKey
-  const filteredHeroes = compute(
-    () => {
-      const _sortKey = sortKey();
-      const _filterKey = filterKey();
-      let _heroes: HeroType[] = heroes();
-      var order = sortOrders[_sortKey] || 1;
+  // Reactively compute filteredHeroes with auto depended filterKey and sortKey
+  const filteredHeroes = compute(() => {
+    const _sortKey = sortKey();
+    const _filterKey = filterKey();
+    let _heroes: HeroType[] = heroes();
+    var order = sortOrders[_sortKey] || 1;
 
-      if (_filterKey) {
-        _heroes = _heroes.filter(row => {
-          return Object.keys(row).some(key => {
-            return (
-              String(row[key])
-                .toLowerCase()
-                .indexOf(_filterKey) > -1
-            );
-          });
+    if (_filterKey) {
+      _heroes = _heroes.filter(row => {
+        return Object.keys(row).some(key => {
+          return (
+            String(row[key])
+              .toLowerCase()
+              .indexOf(_filterKey) > -1
+          );
         });
-      }
-      if (_sortKey) {
-        _heroes = _heroes.slice().sort((a, b) => {
-          a = a[_sortKey];
-          b = b[_sortKey];
-          return (a === b ? 0 : a > b ? 1 : -1) * order;
-        });
-      }
+      });
+    }
+    if (_sortKey) {
+      _heroes = _heroes.slice().sort((a, b) => {
+        a = a[_sortKey];
+        b = b[_sortKey];
+        return (a === b ? 0 : a > b ? 1 : -1) * order;
+      });
+    }
 
-      return _heroes;
-    },
-    () => [filterKey, sortKey]
-  );
+    return _heroes;
+  });
 
   const sortBy = function(key: string) {
     sortKey(key);
@@ -75,10 +72,7 @@ export const DemoGrid = (
             key => html`
               <th
                 onclick="${() => sortBy(key)}"
-                class="${compute(
-                  () => (sortKey() == key ? "active" : ""),
-                  () => [sortKey]
-                )}"
+                class="${compute(() => (sortKey() == key ? "active" : ""))}"
               >
                 ${capitalize(key)}
                 <span

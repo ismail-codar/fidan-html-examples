@@ -1,10 +1,10 @@
-import { createRuntime } from "dom-expressions";
 import { compute } from "@fidanjs/runtime";
 
 const nop: any = () => {};
 
-export const jsxRuntime = createRuntime({
+export const jsxRuntime = {
   wrap<T>(fn: (prev?: T) => T) {
+    debugger;
     compute(fn);
   },
   sample: <T>(fn: () => T) => {
@@ -15,5 +15,19 @@ export const jsxRuntime = createRuntime({
       return null;
     });
   },
-  cleanup: nop
-});
+  cleanup: nop,
+  insert: (parent, accessor) => {
+    if (typeof accessor === "object") {
+      parent.appendChild(accessor);
+    } else if (typeof accessor === "function") {
+      compute(
+        () => {
+          parent.textContent = accessor();
+        },
+        () => [accessor]
+      );
+    } else {
+      parent.textContent = accessor;
+    }
+  }
+};

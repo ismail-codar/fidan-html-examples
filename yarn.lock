@@ -695,9 +695,9 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@fidanjs/runtime@^0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@fidanjs/runtime/-/runtime-0.0.18.tgz#2ee779c6bf5624856297865731c0994ddb28b71b"
+"@fidanjs/runtime@^0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@fidanjs/runtime/-/runtime-0.0.19.tgz#34881f2aa959d828f0c2a3970563fd14ba9869c8"
 
 "@iarna/toml@^2.2.0":
   version "2.2.3"
@@ -1688,10 +1688,6 @@ diffie-hellman@^5.0.0:
     bn.js "^4.1.0"
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
-
-dom-expressions@^0.7.9:
-  version "0.7.9"
-  resolved "https://registry.yarnpkg.com/dom-expressions/-/dom-expressions-0.7.9.tgz#b41bf50721252e999a8e1d3ce142741aaf9c27bf"
 
 dom-serializer@0:
   version "0.1.1"
