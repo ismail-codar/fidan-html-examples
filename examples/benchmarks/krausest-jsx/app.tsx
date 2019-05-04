@@ -1,7 +1,8 @@
 "use strict";
 import "../../_examples";
 import { value, beforeCompute } from "@fidanjs/runtime";
-import _r$ from "@fidanjs/jsx";
+import * as _r$ from "@fidanjs/jsx";
+
 console.log(_r$);
 
 import { buildData, BenchmarkDataRow } from "./data";
@@ -184,7 +185,7 @@ const mainView = ((
       </div>
     </div>
     <table className="table table-hover table-striped test-data">
-      <tbody>{jsxArrayMap(dataArray, itemView, "reconcile")}</tbody>
+      {/* <tbody>{jsxArrayMap(dataArray, itemView, "reconcile")}</tbody> */}
     </table>
     <span
       className="preloadicon glyphicon glyphicon-remove"
