@@ -316,7 +316,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
-"@babel/plugin-syntax-jsx@^7.0.0", "@babel/plugin-syntax-jsx@^7.2.0":
+"@babel/plugin-syntax-jsx@^7.2.0":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-jsx/-/plugin-syntax-jsx-7.2.0.tgz#0b85a3b4bc7cdf4cc4b8bf236335b907ca22e7c7"
   dependencies:
@@ -701,9 +701,19 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@fidanjs/runtime@^0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@fidanjs/runtime/-/runtime-0.0.19.tgz#34881f2aa959d828f0c2a3970563fd14ba9869c8"
+"@fidanjs/babel-plugin-fidan-jsx@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@fidanjs/babel-plugin-fidan-jsx/-/babel-plugin-fidan-jsx-0.0.1.tgz#82c1faeae2695ccf6d0d028f84c1e9f55db65635"
+
+"@fidanjs/jsx@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@fidanjs/jsx/-/jsx-0.0.1.tgz#a32a74945b32f7361b82c060bc4f6b4f2b093ce9"
+  dependencies:
+    "@fidanjs/runtime" latest
+
+"@fidanjs/runtime@^0.0.20", "@fidanjs/runtime@latest":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@fidanjs/runtime/-/runtime-0.0.20.tgz#9cf3b6f62b427fe05d7923272d78fd92f8e663c3"
 
 "@iarna/toml@^2.2.0":
   version "2.2.3"
@@ -996,12 +1006,6 @@ aws-sign2@~0.7.0:
 aws4@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
-
-babel-plugin-jsx-dom-expressions@^0.7.2:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/babel-plugin-jsx-dom-expressions/-/babel-plugin-jsx-dom-expressions-0.7.2.tgz#0181da39a4fe6534b7da444333b50b035f79c598"
-  dependencies:
-    "@babel/plugin-syntax-jsx" "^7.0.0"
 
 babel-runtime@^6.11.6, babel-runtime@^6.26.0:
   version "6.26.0"

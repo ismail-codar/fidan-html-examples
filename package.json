@@ -6,9 +6,10 @@
   "scripts": {
     "start": "parcel index.html --open --no-cache",
     "build": "parcel build index.html --no-cache",
-    "yalc-link": "yalc link @fidanjs/runtime & yalc link @fidanjs/router"
+    "yalc-link": "yalc link @fidanjs/runtime & yalc link @fidanjs/jsx & yalc link @fidanjs/babel-plugin-fidan-jsx"
   },
   "dependencies": {
+    "@fidanjs/jsx": "^0.0.1",
     "@fidanjs/runtime": "^0.0.20",
     "@material-ui/core": "^3.9.3",
     "main.css": "^1.0.0",
@@ -19,7 +20,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
-    "babel-plugin-jsx-dom-expressions": "^0.7.2",
+    "@fidanjs/babel-plugin-fidan-jsx": "^0.0.1",
     "parcel-bundler": "^1.6.1",
     "sass": "^1.19.0",
     "typescript": "^3.4.3"

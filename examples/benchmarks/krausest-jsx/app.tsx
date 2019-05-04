@@ -1,13 +1,11 @@
 "use strict";
 import "../../_examples";
 import { value, beforeCompute } from "@fidanjs/runtime";
+import _r$ from "@fidanjs/jsx";
+console.log(_r$);
 
 import { buildData, BenchmarkDataRow } from "./data";
 import { startMeasure, stopMeasure } from "./measure";
-
-import { jsxRuntime } from "../../jsx";
-import { jsxArrayMap } from "./jsxArrayMap";
-const r = jsxRuntime;
 
 const dataArray = value<BenchmarkDataRow[]>([]);
 const selectedTr = value<HTMLElement>(null);
@@ -90,93 +88,93 @@ const swaprows = () => {
 const itemView = (dataItem: BenchmarkDataRow) => {
   return (
     <tr>
-      <td class="col-md-1">{dataItem.id}</td>
-      <td class="col-md-4">
-        <a class="lbl">{dataItem.label}</a>
+      <td className="col-md-1">{dataItem.id}</td>
+      <td className="col-md-4">
+        <a className="lbl">{dataItem.label}</a>
       </td>
-      <td class="col-md-1">
+      <td className="col-md-1">
         <a data-id={dataItem.id}>
           <span
             data-id={dataItem.id}
-            class="remove glyphicon glyphicon-remove"
+            className="remove glyphicon glyphicon-remove"
             aria-hidden="true"
           />
         </a>
       </td>
-      <td class="col-md-6" />
+      <td className="col-md-6" />
     </tr>
   );
 };
 
-const mainView = (
-  <div class="container" id="main">
-    <div class="jumbotron">
-      <div class="row">
-        <div class="col-md-6">
+const mainView = ((
+  <div className="container" id="main">
+    <div className="jumbotron">
+      <div className="row">
+        <div className="col-md-6">
           <h1>fidan</h1>
         </div>
-        <div class="col-md-6">
-          <div class="row">
-            <div class="col-sm-6 smallpad">
+        <div className="col-md-6">
+          <div className="row">
+            <div className="col-sm-6 smallpad">
               <button
-                onclick={run}
+                onClick={run}
                 type="button"
-                class="btn btn-primary btn-block"
+                className="btn btn-primary btn-block"
                 id="run"
               >
                 Create 1,000 rows
               </button>
             </div>
-            <div class="col-sm-6 smallpad">
+            <div className="col-sm-6 smallpad">
               <button
-                onclick={runLots}
+                onClick={runLots}
                 type="button"
-                class="btn btn-primary btn-block"
+                className="btn btn-primary btn-block"
                 id="runlots"
               >
                 Create 10,000 rows
               </button>
             </div>
-            <div class="col-sm-6 smallpad">
+            <div className="col-sm-6 smallpad">
               <button
                 type="button"
-                class="btn btn-primary
+                className="btn btn-primary
                           btn-block"
                 id="add"
-                onclick={add}
+                onClick={add}
               >
                 Append 1,000 rows
               </button>
             </div>
-            <div class="col-sm-6 smallpad">
+            <div className="col-sm-6 smallpad">
               <button
                 type="button"
-                class="btn btn-primary
+                className="btn btn-primary
                           btn-block"
                 id="update"
-                onclick={update}
+                onClick={update}
               >
                 Update every 10th row
               </button>
             </div>
-            <div class="col-sm-6 smallpad">
+            <div className="col-sm-6 smallpad">
               <button
                 type="button"
-                class="btn btn-primary
+                className="btn btn-primary
                           btn-block"
                 id="clear"
-                onclick={cleardata}
+                onClick={cleardata}
               >
                 Clear
               </button>
             </div>
-            <div class="col-sm-6 smallpad">
+            <div className="col-sm-6 smallpad">
               <button
                 type="button"
-                class="btn btn-primary
+                className="btn btn-primary
                           btn-block"
                 id="swaprows"
-                onclick={swaprows}
+                onClick={swaprows}
               >
                 Swap Rows
               </button>
@@ -185,12 +183,15 @@ const mainView = (
         </div>
       </div>
     </div>
-    <table class="table table-hover table-striped test-data">
-      <tbody>{jsxArrayMap(dataArray, itemView)}</tbody>
+    <table className="table table-hover table-striped test-data">
+      <tbody>{jsxArrayMap(dataArray, itemView, "reconcile")}</tbody>
     </table>
-    <span class="preloadicon glyphicon glyphicon-remove" aria-hidden="true" />
+    <span
+      className="preloadicon glyphicon glyphicon-remove"
+      aria-hidden="true"
+    />
   </div>
-);
+) as any) as HTMLElement;
 
 mainView.addEventListener("click", (e: any) => {
   if (e.target.matches(".lbl")) {
