@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@fidanjs/jsx": "^0.0.2",
-    "@fidanjs/runtime": "^0.0.20",
     "@material-ui/core": "^3.9.3",
     "main.css": "^1.0.0",
     "react": "^16.8.6",

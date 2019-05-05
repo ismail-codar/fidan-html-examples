@@ -1,7 +1,5 @@
 "use strict";
 import { value, beforeCompute } from "@fidanjs/runtime";
-import * as _r$ from "@fidanjs/jsx";
-_r$;
 import "../../_examples";
 
 import { buildData, BenchmarkDataRow } from "./data";
@@ -172,8 +170,7 @@ const mainView = ((
             <div className="col-sm-6 smallpad">
               <button
                 type="button"
-                className="btn btn-primary
-                          btn-block"
+                className="btn btn-primary btn-block"
                 id="swaprows"
                 onClick={swaprows}
               >
