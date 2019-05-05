@@ -1,12 +1,12 @@
 "use strict";
-import "../../_examples";
 import { value, beforeCompute } from "@fidanjs/runtime";
 import * as _r$ from "@fidanjs/jsx";
-
-console.log(_r$);
+_r$;
+import "../../_examples";
 
 import { buildData, BenchmarkDataRow } from "./data";
 import { startMeasure, stopMeasure } from "./measure";
+import { jsxArrayMap } from "@fidanjs/jsx";
 
 const dataArray = value<BenchmarkDataRow[]>([]);
 const selectedTr = value<HTMLElement>(null);
@@ -86,7 +86,7 @@ const swaprows = () => {
   stopMeasure();
 };
 
-const itemView = (dataItem: BenchmarkDataRow) => {
+const itemView: any = (dataItem: BenchmarkDataRow) => {
   return (
     <tr>
       <td className="col-md-1">{dataItem.id}</td>
@@ -185,7 +185,7 @@ const mainView = ((
       </div>
     </div>
     <table className="table table-hover table-striped test-data">
-      {/* <tbody>{jsxArrayMap(dataArray, itemView, "reconcile")}</tbody> */}
+      <tbody {...jsxArrayMap(dataArray, itemView, "reconcile")} />
     </table>
     <span
       className="preloadicon glyphicon glyphicon-remove"
