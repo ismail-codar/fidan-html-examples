@@ -1,4 +1,4 @@
-export const Header = () => {
+export const Header = ({ addTodo }) => {
   return (
     <header className="header">
       <h1>todos</h1>
@@ -6,6 +6,7 @@ export const Header = () => {
         className="new-todo"
         placeholder="What needs to be done?"
         autoFocus
+        onKeyPress={addTodo}
       />
     </header>
   );

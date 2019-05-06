@@ -15,7 +15,7 @@ beforeCompute<HTMLElement>(
     if (prev) prev.className = "";
     if (current) current.className = "danger";
   },
-  () => [selectedTr]
+  [selectedTr]
 );
 
 const run = () => {

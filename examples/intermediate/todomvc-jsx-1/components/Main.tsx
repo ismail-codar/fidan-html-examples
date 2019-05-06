@@ -1,26 +1,24 @@
-export const Main = () => {
+import { FidanArray, compute } from "@fidanjs/runtime";
+import { jsxArrayMap } from "@fidanjs/jsx/build";
+import { Todo } from "../types";
+import { TodoItem } from "./TodoItem";
+
+export const Main = (props: { todos: FidanArray<Todo[]> }) => {
+  const { todos } = props;
   return (
-    <section className="main">
-      <input id="toggle-all" className="toggle-all" type="checkbox" />
-      <label htmlFor="toggle-all">Mark all as complete</label>
-      <ul className="todo-list">
-        <li className="completed">
-          <div className="view">
-            <input className="toggle" type="checkbox" checked />
-            <label>Taste JavaScript</label>
-            <button className="destroy" />
-          </div>
-          <input className="edit" value="Create a TodoMVC template" />
-        </li>
-        <li>
-          <div className="view">
-            <input className="toggle" type="checkbox" />
-            <label>Buy a unicorn</label>
-            <button className="destroy" />
-          </div>
-          <input className="edit" value="Rule the web" />
-        </li>
-      </ul>
-    </section>
+    <>
+      {todos.size() ? (
+        <section className="main">
+          <input id="toggle-all" className="toggle-all" type="checkbox" />
+          <label htmlFor="toggle-all">Mark all as complete</label>
+          <ul
+            className="todo-list"
+            {...jsxArrayMap(todos, todo => <TodoItem todo={todo} /> as any)}
+          />
+        </section>
+      ) : (
+        ""
+      )}
+    </>
   );
 };

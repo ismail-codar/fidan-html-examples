@@ -1,6 +1,5 @@
 import {
   FidanValue,
-  FidanArray,
   value,
   compute,
   html,
@@ -19,8 +18,8 @@ const capitalize = (str: string) => {
 
 // demo grid component
 export const DemoGrid = (
-  columns: FidanArray<string[]>,
-  heroes: FidanArray<HeroType[]>,
+  columns: FidanValue<string[]>,
+  heroes: FidanValue<HeroType[]>,
   filterKey: FidanValue<string>
 ) => {
   const sortKey = value("");
@@ -78,7 +77,7 @@ export const DemoGrid = (
                 <span
                   class="${compute(
                     () => "arrow " + (sortOrders[key] > 0 ? "asc" : "dsc"),
-                    () => [sortKey]
+                    [sortKey]
                   )}"
                 >
                 </span>
