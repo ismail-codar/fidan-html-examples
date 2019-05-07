@@ -1,6 +1,5 @@
 import "../../_examples";
 import { html, value } from "@fidanjs/runtime";
-import { reactToDom, domToReact } from "./use-react";
 import Button, { ButtonProps } from "@material-ui/core/Button";
 import {
   Dialog,
@@ -11,6 +10,7 @@ import {
 import { DialogProps } from "@material-ui/core/Dialog";
 import DialogTitle, { DialogTitleProps } from "@material-ui/core/DialogTitle";
 import * as React from "react";
+import { reactToDom, domToReact } from "@fidanjs/integration-react";
 
 const open = value(false);
 
@@ -46,7 +46,7 @@ const app = html`
           {
             color: "primary",
             onClick: e => {
-              open(false as any);
+              open(false);
             }
           },
           "Agree"
@@ -59,7 +59,7 @@ const app = html`
         variant: "contained",
         color: "primary",
         onClick: e => {
-          open(true as any);
+          open(true);
         }
       },
       "Open alert dialog"
