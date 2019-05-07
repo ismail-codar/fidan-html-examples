@@ -1,8 +1,7 @@
 import { FidanArray, compute } from "@fidanjs/runtime";
 import { jsxArrayMap } from "@fidanjs/jsx/build";
-import { Todo } from "../types";
 import { TodoItem } from "./TodoItem";
-import { todos, allChecked } from "../store";
+import { todos, allChecked, shownTodos } from "../store";
 
 export const Main = () => {
   return (
@@ -21,7 +20,10 @@ export const Main = () => {
           <label htmlFor="toggle-all">Mark all as complete</label>
           <ul
             className="todo-list"
-            {...jsxArrayMap(todos, todo => <TodoItem todo={todo} /> as any)}
+            {...jsxArrayMap(
+              shownTodos,
+              todo => <TodoItem todo={todo} /> as any
+            )}
           />
         </section>
       ) : (

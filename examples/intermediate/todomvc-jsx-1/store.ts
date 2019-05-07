@@ -1,19 +1,13 @@
-import {
-  value,
-  FidanValue,
-  FidanArray,
-  compute,
-  debounce
-} from "@fidanjs/runtime";
+import { value, FidanArray, compute, debounce } from "@fidanjs/runtime";
 import { FilterType, Todo } from "./types";
 
 // variables
 const STORAGE_KEY = "fidan_todomvc";
-const hashFilter = value<FilterType>("");
+export const hashFilter = value<FilterType>("");
 export const todos = value<Todo[]>([]) as FidanArray<Todo[]>;
 export const allChecked = value(false);
 
-const shownTodos: FidanArray<Todo[]> = compute(() => {
+export const shownTodos: FidanArray<Todo[]> = compute(() => {
   let _todos = todos();
   const filter = hashFilter();
   if (filter !== "") {
@@ -51,7 +45,7 @@ export const updateTodo = (todo: Todo, title: string) => {
 export const removeTodo = id => {
   todos().splice(shownTodos().findIndex(item => item.id == id), 1);
 };
-const clearCompleted = e => {
+export const clearCompleted = e => {
   const removes = [];
   todos().forEach(todo => {
     if (todo.completed()) removes.push(todo);
@@ -59,12 +53,8 @@ const clearCompleted = e => {
   while (removes.length) todos().splice(todos().indexOf(removes.pop()), 1);
 };
 
-// css computations
-const footerLinkCss = (waiting: FilterType) =>
-  compute(() => (hashFilter() === waiting ? "selected" : ""));
-
 // footer
-const todoCount = compute(() => {
+export const todoCount = compute(() => {
   const count = todos().filter(item => !item.completed()).length;
   if (count === 0 && !allChecked()) {
     allChecked(true);
