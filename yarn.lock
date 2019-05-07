@@ -643,16 +643,16 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@fidanjs/babel-plugin-fidan-jsx@^0.0.3", "@fidanjs/babel-plugin-fidan-jsx@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@fidanjs/babel-plugin-fidan-jsx/-/babel-plugin-fidan-jsx-0.0.4.tgz#a2b913aed72939455baac8ec250a04a0d49a4acb"
+"@fidanjs/babel-plugin-fidan-jsx@^0.0.3", "@fidanjs/babel-plugin-fidan-jsx@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@fidanjs/babel-plugin-fidan-jsx/-/babel-plugin-fidan-jsx-0.0.5.tgz#4eb1a4bf8f9895bd9d54466b07848577064dee0c"
   dependencies:
     "@babel/core" "^7.4.4"
     "@babel/plugin-syntax-jsx" "^7.2.0"
 
-"@fidanjs/jsx@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@fidanjs/jsx/-/jsx-0.0.4.tgz#03b021a4750831702bd2afb32b60c97e94ef9311"
+"@fidanjs/jsx@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@fidanjs/jsx/-/jsx-0.0.5.tgz#6d24a41aa88d987189b7b165f4192d2425e8537d"
   dependencies:
     "@fidanjs/babel-plugin-fidan-jsx" "^0.0.3"
     "@fidanjs/runtime" "^0.0.20"
