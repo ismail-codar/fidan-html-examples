@@ -30,13 +30,13 @@ export const Footer = () => {
           </a>
         </li>
       </ul>
-      {/* {compute(() => todos().length - todoCount() > 0, [todoCount]) ? (
+      {compute(() => todos().length - todoCount() > 0, [todoCount]) ? (
         <button className="clear-completed" onClick={clearCompleted}>
           Clear completed
         </button>
       ) : (
         ""
-      )} */}
+      )}
     </footer>
   );
 };
