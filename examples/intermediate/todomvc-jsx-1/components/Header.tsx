@@ -1,4 +1,6 @@
-export const Header = ({ addTodo }) => {
+import { addTodo } from "../store";
+
+export const Header = () => {
   return (
     <header className="header">
       <h1>todos</h1>

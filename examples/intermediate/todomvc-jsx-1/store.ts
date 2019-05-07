@@ -11,7 +11,7 @@ import { FilterType, Todo } from "./types";
 const STORAGE_KEY = "fidan_todomvc";
 const hashFilter = value<FilterType>("");
 export const todos = value<Todo[]>([]) as FidanArray<Todo[]>;
-const allChecked = value(false);
+export const allChecked = value(false);
 
 const shownTodos: FidanArray<Todo[]> = compute(() => {
   let _todos = todos();
@@ -39,7 +39,7 @@ export const addTodo = e => {
   }
 };
 
-const updateTodo = (todo: Todo, title: string) => {
+export const updateTodo = (todo: Todo, title: string) => {
   title = title.trim();
   if (title) {
     todo.title(title);
