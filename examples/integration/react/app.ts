@@ -1,5 +1,5 @@
 import "../../_examples";
-import { html, value } from "@fidanjs/runtime";
+import { html, value, inject } from "@fidanjs/runtime";
 import Button, { ButtonProps } from "@material-ui/core/Button";
 import {
   Dialog,
@@ -11,18 +11,18 @@ import { DialogProps } from "@material-ui/core/Dialog";
 import DialogTitle, { DialogTitleProps } from "@material-ui/core/DialogTitle";
 import * as React from "react";
 import { reactToDom, domToReact } from "@fidanjs/integration-react";
+import { TestReact } from "./test.react";
 
-const open = value(false);
+const dialogProps: DialogProps = inject({ open: false });
 
 const app = html`
   <div>
     app
     <hr />
+    ${reactToDom(TestReact, {})}
     ${reactToDom<DialogProps>(
       Dialog,
-      {
-        open: open
-      },
+      dialogProps,
       React.createElement(DialogTitle, {}, "Use Google's location service?"),
       React.createElement(
         DialogContent,
@@ -46,7 +46,7 @@ const app = html`
           {
             color: "primary",
             onClick: e => {
-              open(false);
+              dialogProps.open = false;
             }
           },
           "Agree"
@@ -59,7 +59,7 @@ const app = html`
         variant: "contained",
         color: "primary",
         onClick: e => {
-          open(true);
+          dialogProps.open = true;
         }
       },
       "Open alert dialog"
