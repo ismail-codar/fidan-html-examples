@@ -1,12 +1,12 @@
 "use strict";
-import { value, beforeCompute } from "@fidanjs/runtime";
+import { value, beforeCompute, FidanArray } from "@fidanjs/runtime";
 import "../../_examples";
 
 import { buildData, BenchmarkDataRow } from "./data";
 import { startMeasure, stopMeasure } from "./measure";
 import { jsxArrayMap } from "@fidanjs/jsx";
 
-const dataArray = value<BenchmarkDataRow[]>([]);
+const dataArray = value([]) as FidanArray<BenchmarkDataRow[]>;
 const selectedTr = value<HTMLElement>(null);
 
 beforeCompute<HTMLElement>(
