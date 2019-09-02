@@ -9,8 +9,9 @@
     "yalc-link": "yalc link @fidanjs/runtime & yalc link @fidanjs/jsx & yalc link @fidanjs/babel-plugin-fidan-jsx & yalc link @fidanjs/integration-react"
   },
   "dependencies": {
-    "@fidanjs/integration-react": "^0.0.2",
-    "@fidanjs/jsx": "^0.0.9",
+    "@fidanjs/integration-react": "latest",
+    "@fidanjs/jsx": "latest",
+    "@fidanjs/babel-plugin-fidan-jsx": "latest",
     "@material-ui/core": "^3.9.3",
     "main.css": "^1.0.0",
     "react": "^16.8.6",
@@ -21,7 +22,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
-    "@fidanjs/babel-plugin-fidan-jsx": "^0.0.8",
     "parcel-bundler": "^1.12.3",
     "sass": "^1.20.1",
     "typescript": "^3.4.5"
